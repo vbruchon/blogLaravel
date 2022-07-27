@@ -16,5 +16,8 @@ class Post extends Model
     {
         return $this->belongsTo(User::Class, 'user_id');
     }
-
+    public function commentary()
+    {
+        return $this->hasMany(Commentary::Class, 'commentary_id');
+    }
 }

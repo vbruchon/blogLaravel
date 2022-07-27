@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('pseudo')->nullable();
             $table->text('content');
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('post_id')->constrained();
             $table->timestamps();
-            $table->foreignId('user_id')->nullable();
-            $table->foreignId('post_id');
         });
     }
 
