@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Commentary;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CommentarySeeder extends Seeder
@@ -15,6 +14,6 @@ class CommentarySeeder extends Seeder
      */
     public function run()
     {
-        Commentary::factory(10)->create();
+        Commentary::factory(1000)->create();
     }
 }

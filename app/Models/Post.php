@@ -8,16 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $perPage = 10;
+
     /**
      * Create the relationship with User
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->belongsTo(User::Class, 'user_id');
+        return $this->belongsTo(User::class);
     }
-    public function commentary()
+
+    public function comments()
     {
-        return $this->hasMany(Commentary::Class, 'commentary_id');
+        return $this->hasMany(Commentary::class);
     }
+    // @todo REname commantary avec comments.
 }

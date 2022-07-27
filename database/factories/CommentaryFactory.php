@@ -18,27 +18,21 @@ class CommentaryFactory extends Factory
      */
     public function definition()
     {
-             $random = mt_rand(0,1);
+        $random = rand(0, 1);
 
-             if ($random == 0){
-                 $userId = User::inRandomOrder()->first();
-             } else{
-                 $userId = null;
-             }
-
-             if ($userId == null) {
-                 return [
-                     'email' => $this->faker->email(),
-                     'pseudo' => $this->faker->name(),
-                     'post_id' => Post::inRandomOrder()->first(),
-                     'content' => $this->faker->text()
-                 ];
-             } else {
-                 return [
-                     'user_id' => $userId,
-                     'post_id' => Post::inRandomOrder()->first(),
-                     'content' => $this->faker->text()
-                 ];
-             }
+        if ($random < 0.5) {
+            return [
+                'user_id' => User::inRandomOrder()->first(),
+                'post_id' => Post::inRandomOrder()->first(),
+                'content' => $this->faker->text(),
+            ];
+        } else {
+            return [
+                'email' => $this->faker->email(),
+                'pseudo' => $this->faker->name(),
+                'post_id' => Post::inRandomOrder()->first(),
+                'content' => $this->faker->text(),
+            ];
+        }
     }
 }
