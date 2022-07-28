@@ -21,6 +21,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(8),
             'content' => $this->faker->text(2500),
             'user_id' => User::inRandomOrder()->first(),
+            'created_at' => $this->faker->dateTimeBetween('-2month')
         ];
     }
 }

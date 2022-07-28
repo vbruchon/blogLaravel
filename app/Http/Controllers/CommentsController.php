@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class CommentaryController extends Controller
+class CommentsController extends Controller
 {
     //
 }

@@ -24,8 +24,8 @@
         </div>
         <div class="ml-2 mb-14">
             <div class="mt-2 text-sm text-slate-600 ml-4 mr-20">
-                {{ $post->comments_count }}
-                <p>commentaires</p>
+                <p>{{ $post->comments_count }} commentaires</p>
+                <p>Publier {{ $post->created_at->diffForHumans() }}</p>
             </div>
         </div>
         </div>
