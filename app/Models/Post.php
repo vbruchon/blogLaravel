@@ -14,16 +14,15 @@ class Post extends Model
     /**
      * Create the relationship with User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function comments()
     {
         return $this->hasMany(Comments::class);
     }
-    // @todo REname commantary avec comments.
 }

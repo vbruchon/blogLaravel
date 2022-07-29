@@ -47,7 +47,7 @@ class User extends Authenticatable
         return $this->belongsTo(Post::class);
     }
 
-    public function commentary()
+    public function comments()
     {
         return $this->belongsTo(Comments::class);
     }

@@ -25,6 +25,7 @@ class CommentsFactory extends Factory
                 'user_id' => User::inRandomOrder()->first(),
                 'post_id' => Post::inRandomOrder()->first(),
                 'content' => $this->faker->text(),
+                'created_at' => $this->faker->dateTimeBetween('-2 months'),
             ];
         } else {
             return [
@@ -32,6 +33,7 @@ class CommentsFactory extends Factory
                 'pseudo' => $this->faker->name(),
                 'post_id' => Post::inRandomOrder()->first(),
                 'content' => $this->faker->text(),
+                'created_at' => $this->faker->dateTimeBetween('-2 months'),
             ];
         }
     }

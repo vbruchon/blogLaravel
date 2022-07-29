@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+
 class PostController extends Controller
 {
-    public function index()
+    public function show(Post $post)
     {
-        return view('post');
+        $post->load(['comments.user', 'user']);
+
+        return view('post', ['post' => $post]);
     }
 }
