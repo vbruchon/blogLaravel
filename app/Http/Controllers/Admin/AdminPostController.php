@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comments;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class AdminPostController extends Controller
 {
+    //SHOW ALL POST IN TH DASHBOARD
     public function index()
     {
         $posts = Post::latest()->paginate(20);
@@ -16,6 +17,36 @@ class AdminController extends Controller
         return view('dashboard.dashboard_post', ['posts' => $posts]);
     }
 
+    //CREATE AN NEW POST
+    public function create()
+    {
+        // Redirection
+        return view('dashboard.dashboard_create');
+    }
+
+    public function addPost(Post $post, Request $request)
+    {
+        // Validation
+        $rules = [
+            'title' => ['string', 'min:10', 'max:250'],
+            'content' => ['string', 'max:65000'],
+            'user_id' => ['exists:App\Models\User,id'],
+        ];
+
+        $validated = $request->validate($rules);
+
+        // Ajout du Post
+        $post->title = $validated['title'];
+        $post->content = $validated['content'];
+        $post->user_id = Auth::id();
+
+        $post->save();
+
+        // Redirection
+        return redirect()->back()->with('message', 'L\'article a bien été créer !');
+    }
+
+    //SHOW AN ARTICLE FOR THE UPDATE
     public function show(Post $post)
     {
         $post->load(['user']);
@@ -23,10 +54,7 @@ class AdminController extends Controller
         return view('dashboard.dashboard_post_edit', ['post' => $post]);
     }
 
-    public function create()
-    {
-    }
-
+    //UPDATE,VALIDATE AN ARTICLE AND SAVE IN DB
     public function update(Request $request, Post $post)
     {
         // Validation
@@ -47,6 +75,7 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'L\'article a bien été modifié !');
     }
 
+    // DELETE AN POST IN DB VIA DASHBOARD
     public function destroy(Post $post)
     {
         $post->comments()->delete();
@@ -55,10 +84,3 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'L\'article a bien été supprimé !');
     }
 }
-/*public function destroy(Post $post)
-{
-    $post->comments()->delete();
-    $post->delete();
-
-    return redirect()->back()->with('message', 'Article a bien été supprimé !');
-}*/

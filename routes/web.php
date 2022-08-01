@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminCommentController;
+use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -30,15 +31,26 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 //Dashboard Posts Page -> list all posts
-Route::get('/dashboard/posts', [AdminController::class, 'index'])->name('dashboard.post');
+Route::get('/dashboard/posts', [AdminPostController::class, 'index'])->name('dashboard.post');
+
+//Dashboard Create an post
+Route::get('/dashboard/post/create', [AdminPostController::class, 'create'])->name('dashboard.create');
+
+//Dashboard Add an post
+Route::post('dashboard/post/create/add', [AdminPostController::class, 'addPost'])->name('dashboard.add');
+
 //Dashboard Posts Page -> Show an post for edit this
-Route::get('/dashboard/post/{post}', [AdminController::class, 'show'])->name('dashboard.post.edit');
+Route::get('/dashboard/post/{post}', [AdminPostController::class, 'show'])->name('dashboard.post.edit');
+
 //Dashboard Posts Page -> Send update to the DB and show the post update
-Route::put('/dashboard/post/{post}', [AdminController::class, 'update'])->name('dashboard.post.update');
+Route::put('/dashboard/post/{post}', [AdminPostController::class, 'update'])->name('dashboard.post.update');
 
 //Dashboard Posts Page -> Delete an post and this comments
-Route::delete('dashboard/post/{post}/delete', [AdminController::class, 'destroy'])->name('dashboard.posts.destroy');
+Route::delete('dashboard/post/{post}/delete', [AdminPostController::class, 'destroy'])->name('dashboard.posts.destroy');
 
-//Route::delete('/dashboard/post/{post}', [AdminController::class, 'destroy'])->name('dashboard.post.delete');
+//Dashboard Posts Page -> list all posts
+Route::get('/dashboard/posts', [AdminCommentController::class, 'index'])->name('dashboard.post');
+
+
 
 require __DIR__.'/auth.php';
