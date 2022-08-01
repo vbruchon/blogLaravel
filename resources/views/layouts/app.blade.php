@@ -15,7 +15,7 @@
 </head>
 <body class="font-sans antialiased">
 @if (session('message'))
-    <div class="bg-green-400 p-6 text-center font-bold animate-ping">
+    <div class="bg-green-400 p-6 text-center text-lg font-bold animate-bounce">
         {{ session('message') }}
     </div>
 @endif

@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected mixed $comments;
+
     protected $perPage = 10;
 
     /**

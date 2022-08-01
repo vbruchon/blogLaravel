@@ -58,10 +58,21 @@
                     <td class="p-2 border-r">{{$post->created_at}}</td>
                     <td>
                         <a href="{{ route('dashboard.post.edit', $post) }}"
-                           class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin ">Edit</a>
-                        <a href="{{ route('dashboard.post.delete', $post) }}"
-                           class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
+                           class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin ">
+                            Edit
+                        </a>
+
+                        <form method="post" action="{{ route('dashboard.posts.destroy', $post) }}">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">
+                                Remove
+                            </button>
+                        </form>
+
+
                     </td>
+
                 </tr>
 
                 </tbody>
