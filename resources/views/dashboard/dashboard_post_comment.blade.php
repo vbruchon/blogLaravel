@@ -5,6 +5,12 @@
         </h2>
     </x-slot>
 
+    <div class="mb-8"></div>
+    <a href="{{route('dashboard')}}"
+       class="bg-amber-500 rounded-full pt-2 pb-2 pr-3 pl-3 ml-16 mt-16 font-semibold ">
+        Retourner à l'Accueil
+    </a>
+
     <h2 class="font-semibold text-2xl text-gray-800 leading-tight flex justify-center mt-10 mb-8">
         Voici la liste de vos commentaires
     </h2>
@@ -79,7 +85,7 @@
                     <td class="p-2 border-r">{{$comment->created_at->diffForHumans()}}</td>
                     <td class="p-2 border-r">
                         <div class="flex flex-nowrap space-x-1 ">
-                            <a href=""
+                            <a href="{{ route('dashboard.comment.update', [$post, $comment]) }}"
                                class="bg-blue-500 p-2 pl-3 pr-3 text-white hover:shadow-lg text-xs font-semibold  ">
                                 Modifier
                             </a>
@@ -100,4 +106,9 @@
 
         </table>
     </div>
+    <div class="mb-8"></div>
+    <a href="{{route('dashboard.post')}}"
+       class="bg-amber-500 rounded-full pt-2 pb-2 pr-3 pl-3 ml-16 mt-16 font-semibold ">
+        Retourner à l'Accueil
+    </a>
 </x-app-layout>

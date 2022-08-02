@@ -9,10 +9,25 @@
         Voici la liste de vos articles
     </h2>
 
-    <a href="{{route('dashboard.create')}}"
-       class="bg-amber-500 rounded-full pt-2 pb-2 pr-3 pl-3 ml-16 font-semibold "> + Créer un article</a>
+    <div class="space-x-96">
+        <div class="relative">
+            <div class="absolute left-5">
+                <a href="{{route('dashboard')}}"
+                   class="bg-amber-500 rounded-full pt-2 pb-2 pr-3 pl-3 mt-16 font-semibold ">
+                    Retourner à l'Accueil
+                </a>
+            </div>
+            <div class="absolute right-5">
+                <a href="{{route('dashboard.create')}}"
+                   class="bg-amber-500 rounded-full pt-2 pb-2 pr-3 pl-3 ml-16 font-semibold ">
+                    + Créer un article
+                </a>
+            </div>
+        </div>
 
-    <div class="table w-full p-2 mt-8">
+    </div>
+
+    <div class="table w-full p-2 mt-20">
         <table class="w-full border">
             <thead>
             <tr class="bg-gray-50 border-b">
