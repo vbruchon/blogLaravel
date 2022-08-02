@@ -18,11 +18,11 @@ class AdminCommentController
      //
     }
 
-    public function destroy(){
-        //
+    public function destroy(Post $post, Comments $comment)
+    {
+        $post->comments->find($comment)->delete();
+
+        return redirect()->back()->with('message', 'Le commentaire a bien été supprimé !');
     }
 }
-/*
-    $coments = Comments::
-    return view('dashboard.dashboard_post', ['posts' => $posts]);
-*/
+

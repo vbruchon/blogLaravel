@@ -84,7 +84,7 @@
                                 Modifier
                             </a>
 
-                            <form method="post" action="">
+                            <form method="post" action="{{ route('dashboard.comment.destroy', [$post, $comment]) }}">
                                 @csrf
                                 @method('delete')
                                 <button type="submit"

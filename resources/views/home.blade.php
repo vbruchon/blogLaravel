@@ -1,10 +1,14 @@
 <x-guest-layout>
+
+<a class="bg-amber-500 rounded-full pt-2 pb-2 pl-3 pr-3 ml-16 font-semibold" href="{{route('dashboard')}}">
+    Se connecter
+</a>
     <div class="flex justify-center mt-14 mb-14 text-4xl font-extrabold">
         <h1>Nos derniers articles ...</h1>
     </div>
 
     @foreach($posts as $post)
-            <div class="shadow-gray-500 shadow-md ml-40 mr-40 mb-36 pt-12 pb-12 ">
+            <div class="bg-gray-200 rounded-lg shadow-gray-500 shadow-md ml-40 mr-40 mb-36 pt-12 pb-12 ">
                 <div class="mt-5 mr-4 ml-4 mb-8 ">
                     <div class="text-xl flex justify-center ">
                         <a href="{{route('post.show', $post)}}" class="hover:underline">{{ $post->title }}</a>
@@ -30,5 +34,4 @@
 
 
     {{ $posts->links() }}
-
 </x-guest-layout>

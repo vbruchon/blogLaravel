@@ -48,13 +48,16 @@ Route::put('/dashboard/post/{post}', [AdminPostController::class, 'update'])->na
 //Dashboard Posts Page -> Delete an post and this comments
 Route::delete('dashboard/post/{post}/delete', [AdminPostController::class, 'destroy'])->name('dashboard.posts.destroy');
 
-//Dashboard Posts Page -> list all posts
+
+
+
+//Dashboard Comments Page By Post -> list all comments
 Route::get('/dashboard/post/{post}/comments', [AdminCommentController::class, 'show'])->name('dashboard.post.comments');
 /*
-//Dashboard Posts Page -> Send update to the DB and show the post update
+//Dashboard Comments Page By Post -> Send update to the DB and show the post update
 Route::put('/dashboard/post/{post}', [AdminCommentController::class, 'update'])->name('dashboard.comment.update');
-
-//Dashboard Posts Page -> Delete an post and this comments
-Route::delete('dashboard/post/{post}/delete', [AdminCommentController::class, 'destroy'])->name('dashboard.comment.destroy');
 */
+//Dashboard Comment Page By Post -> Delete an comment
+Route::delete('dashboard/post/{post}/comments/{comment}/delete', [AdminCommentController::class, 'destroy'])->name('dashboard.comment.destroy');
+
 require __DIR__.'/auth.php';
