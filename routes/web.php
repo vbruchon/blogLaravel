@@ -27,6 +27,7 @@ Route::post('/comment', [CommentController::class, 'store'])->name('comment.stor
 Route::get('/dashboard', function () {
     return view('/dashboard.dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 //Dashboard Posts Page -> list all posts
 Route::get('/dashboard/posts', [AdminPostController::class, 'index'])->name('dashboard.post');
 //Dashboard Create an post

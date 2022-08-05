@@ -78,7 +78,7 @@
                     <td class="p-2 border-r">
                         <div class="flex flex-nowrap space-x-1 ">
                             <a href="{{ route('dashboard.post.edit', $post) }}"
-                               class="bg-blue-500 p-2 pl-3 pr-3 text-white hover:shadow-lg text-xs font-semibold  ">
+                               class="rounded-full bg-blue-500 p-2 pl-3 pr-3 text-white hover:shadow-lg text-xs font-semibold  ">
                                 Modifier
                             </a>
 
@@ -86,14 +86,14 @@
                                 @csrf
                                 @method('delete')
                                 <button type="submit"
-                                        class="bg-red-500 p-2 pl-3 pr-3 text-white hover:shadow-lg text-xs font-semibold">
+                                        class="rounded-full bg-red-500 p-2 pl-3 pr-3 text-white hover:shadow-lg text-xs font-semibold">
                                     Supprimer
                                 </button>
                             </form>
                         </div>
                         <div class="mb-3"></div>
                         <a href="{{ route('dashboard.post.comments', $post) }}"
-                           class="bg-gray-600 pt-2 pb-2 pl-3 pr-3 text-white hover:shadow-lg text-xs font-semibold  ">
+                           class="rounded-full bg-gray-600 pt-2 pb-2 pl-3 pr-3 text-white hover:shadow-lg text-xs font-semibold  ">
                             Voir les commentaires
                         </a>
 
@@ -103,7 +103,9 @@
                 </tr>
 
                 </tbody>
+
             @endforeach
+            {{ $posts->links() }}
 
         </table>
     </div>

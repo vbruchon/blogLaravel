@@ -43,7 +43,7 @@ class AdminPostController extends Controller
         $post->save();
 
         // Redirection
-        return redirect()->back()->with('message', 'L\'article a bien été créer !');
+        return redirect(route('dashboard.post'))->with('message', 'L\'article a bien été créer !');
     }
 
     //SHOW AN ARTICLE FOR THE UPDATE
@@ -61,7 +61,7 @@ class AdminPostController extends Controller
         $rules = [
             'title' => ['required', 'string', 'max:250'],
             'content' => ['required', 'string', 'max:65000'],
-            'post_id' => ['required', 'exists:App\Models\Post,id'],
+            'post_id' => ['exists:App\Models\Post,id'],
         ];
 
         $validated = $request->validate($rules);
